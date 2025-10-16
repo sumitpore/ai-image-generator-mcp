@@ -1,0 +1,30 @@
+{
+  "name": "image-generator-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for generating images with fal.ai and uploading to ImageKit",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "image-generator-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["mcp", "image-generation", "fal.ai", "imagekit"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "node-fetch": "^3.3.2",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
+

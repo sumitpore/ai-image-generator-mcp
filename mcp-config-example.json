@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "image-generator": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/image-generator-mcp/dist/index.js"
+      ],
+      "env": {
+        "FAL_KEY": "your_fal_api_key_here",
+        "IMAGEKIT_PUBLIC_KEY": "your_imagekit_public_key_here",
+        "IMAGEKIT_PRIVATE_KEY": "your_imagekit_private_key_here"
+      }
+    }
+  }
+}
+

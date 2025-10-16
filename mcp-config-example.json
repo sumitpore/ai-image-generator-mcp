@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "fal-imagekit": {
-      "command": "node",
+      "command": "/usr/local/bin/node",
       "args": [
         "/absolute/path/to/fal-imagekit-mcp/dist/index.js"
       ],

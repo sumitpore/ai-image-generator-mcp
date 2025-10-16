@@ -74,16 +74,17 @@ The compiled server will be in the `dist/` directory.
 ### For Cursor
 
 1. **Locate your MCP configuration file**:
-   - **MacOS/Linux**: `~/.config/cursor/mcp.json` or `~/Library/Application Support/Cursor/User/globalStorage/settings/mcp.json`
-   - **Windows**: `%APPDATA%\Cursor\User\globalStorage\settings\mcp.json`
+   - **MacOS**: `~/.cursor/mcp.json`
+   - **Linux**: `~/.config/cursor/mcp.json`
+   - **Windows**: `%APPDATA%\Cursor\mcp.json`
 
 2. **Add the server configuration**:
 
 ```json
 {
   "mcpServers": {
-    "image-generator": {
-      "command": "node",
+    "fal-imagekit": {
+      "command": "/usr/local/bin/node",
       "args": [
         "/absolute/path/to/image-generator-mcp/dist/index.js"
       ],
@@ -100,6 +101,7 @@ The compiled server will be in the `dist/` directory.
 3. **Important**: 
    - Replace `/absolute/path/to/image-generator-mcp` with your actual installation path
    - Replace all placeholder API keys with your actual credentials
+   - If `/usr/local/bin/node` doesn't work, find your Node.js path with `which node` (see [troubleshooting](#spawn-node-enoent-or-command-not-found-error-macoslinux))
 
 4. **Restart Cursor**
 
@@ -380,6 +382,45 @@ image-generator-mcp/
 - ✅ Check that `node_modules/` exists (dependencies installed)
 - ✅ Restart your IDE completely
 - ✅ Check the MCP logs for errors
+
+### "spawn node ENOENT" or "Command not found" Error (macOS/Linux)
+
+**Symptoms**: Cursor can't detect MCP tools, logs show `spawn node ENOENT` or similar error
+
+**Cause**: Cursor cannot find the `node` command in its PATH environment
+
+**Solution**: Use the full path to Node.js instead of just `node` in your MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "fal-imagekit": {
+      "command": "/usr/local/bin/node",  // Full path instead of "node"
+      "args": [
+        "/absolute/path/to/image-generator-mcp/dist/index.js"
+      ],
+      "env": {
+        "FAL_KEY": "your_fal_api_key_here",
+        "IMAGEKIT_PUBLIC_KEY": "your_imagekit_public_key_here",
+        "IMAGEKIT_PRIVATE_KEY": "your_imagekit_private_key_here"
+      }
+    }
+  }
+}
+```
+
+**To find your Node.js path**:
+```bash
+which node
+```
+
+Common paths:
+- `/usr/local/bin/node` (Homebrew on Intel Mac)
+- `/opt/homebrew/bin/node` (Homebrew on Apple Silicon)
+- `/usr/bin/node` (System installation)
+- `~/.nvm/versions/node/vX.X.X/bin/node` (if using nvm)
+
+After updating the config, **restart Cursor completely** (Cmd+Q then reopen)
 
 ### "Failed to generate image"
 - ✅ Ensure your fal.ai account has sufficient credits ([check here](https://fal.ai/dashboard))

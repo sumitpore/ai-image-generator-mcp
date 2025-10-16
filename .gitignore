@@ -4,7 +4,7 @@ node_modules/
 # Build output
 dist/
 
-# Environment variables
+# Environment variables (optional - not used by default)
 .env
 .env.local
 

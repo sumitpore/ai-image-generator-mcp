@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "image-generator": {
+    "fal-imagekit": {
       "command": "node",
       "args": [
-        "/absolute/path/to/image-generator-mcp/dist/index.js"
+        "/absolute/path/to/fal-imagekit-mcp/dist/index.js"
       ],
       "env": {
         "FAL_KEY": "your_fal_api_key_here",

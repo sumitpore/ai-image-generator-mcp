@@ -1,4 +1,4 @@
-# Image Generator MCP Server
+# Fal-AI - ImageKit MCP Server
 
 An MCP (Model Context Protocol) server that generates images using [fal.ai's Imagen4 Ultra model](https://fal.ai/models/fal-ai/imagen4/preview/ultra) and automatically uploads them to [ImageKit](https://imagekit.io) for permanent hosting.
 
